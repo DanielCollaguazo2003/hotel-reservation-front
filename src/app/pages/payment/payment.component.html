@@ -1,0 +1,39 @@
+<div class="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg">
+  <h2 class="text-2xl font-bold mb-4">Agregar Pago</h2>
+
+  <form [formGroup]="pagoForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    <div>
+      <label class="block text-gray-700">Fecha de Pago</label>
+      <input type="date" formControlName="fecha_pago" class="w-full p-2 border rounded-lg">
+    </div>
+
+    <div>
+      <label class="block text-gray-700">Cantidad</label>
+      <input type="number" formControlName="cantidad" class="w-full p-2 border rounded-lg">
+    </div>
+
+    <div>
+      <label class="block text-gray-700">Factura</label>
+      <select formControlName="id_factura" class="w-full p-2 border rounded-lg">
+        <option *ngFor="let factura of facturas" [value]="factura.idfactura">
+          Factura #{{ factura.numerofactura }} - Total: {{ factura.total }} - ID: {{ factura.idfactura }}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg w-full hover:bg-blue-600">
+      Guardar Pago
+    </button>
+  </form>
+
+  <!-- Sección para mostrar la lista de pagos -->
+  <h2 class="text-xl font-bold mt-6">Lista de Pagos</h2>
+  <div *ngIf="pagos.length === 0" class="text-gray-500">No hay pagos registrados.</div>
+  <ul class="mt-2">
+    <li *ngFor="let pago of pagos" class="p-2 border-b">
+      <strong>Fecha:</strong> {{ pago.fechapago }} -
+      <strong>Cantidad:</strong> {{ pago.cantidad }} -
+      <strong>Factura:</strong> {{ pago.idfactura }}
+    </li>
+  </ul>
+</div>

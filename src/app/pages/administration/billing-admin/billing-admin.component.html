@@ -1,0 +1,54 @@
+<div class="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+  <h2 class="text-2xl font-bold mb-4">Administración de Facturas y Reservaciones</h2>
+
+  <!-- Barra de búsqueda -->
+  <div class="mb-4 flex items-center gap-2">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      placeholder="Buscar por número de factura o estado"
+      class="w-full p-2 border rounded-lg"
+    />
+    <button (click)="obtenerFacturas()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+      Buscar
+    </button>
+  </div>
+
+  <!-- Botón para agregar nueva factura -->
+  <button (click)="nuevaFactura()" class="bg-green-500 text-white px-4 py-2 rounded-lg mb-4 hover:bg-green-600">
+    + Nueva Factura
+  </button>
+
+  <!-- Tabla de facturas -->
+  <div class="overflow-x-auto">
+    <table class="min-w-full border-collapse border border-gray-300">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border px-4 py-2">Número Factura</th>
+          <th class="border px-4 py-2">Fecha Emisión</th>
+          <th class="border px-4 py-2">Monto</th>
+          <th class="border px-4 py-2">Estado Pago</th>
+          <th class="border px-4 py-2">ID Reserva</th>
+          <th class="border px-4 py-2">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let factura of facturasFiltradas()">
+          <td class="border px-4 py-2">{{ factura.numerofactura }}</td>
+          <td class="border px-4 py-2">{{ factura.fechaemision }}</td>
+          <td class="border px-4 py-2">${{ factura.total }}</td>
+          <td class="border px-4 py-2">{{ factura.estadopago }}</td>
+          <td class="border px-4 py-2">{{ factura.idreserva }}</td>
+          <td class="border px-4 py-2 flex gap-2">
+            <button (click)="editarFactura(factura)" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600">
+              ✏️ Editar
+            </button>
+            <button (click)="eliminarFactura(factura.idFactura)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
+              🗑 Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

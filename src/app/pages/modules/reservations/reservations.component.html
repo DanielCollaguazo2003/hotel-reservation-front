@@ -1,1 +1,53 @@
-<p>reservations works!</p>
+<div class="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg">
+  <h2 class="text-2xl font-bold mb-4">Agregar Reserva</h2>
+
+  <form [formGroup]="reservaForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    <div>
+      <label class="block text-gray-700">Cliente</label>
+      <select formControlName="id_cliente" class="w-full p-2 border rounded-lg">
+        <option *ngFor="let cliente of clientes" [value]="cliente.idcliente">
+          {{ cliente.nombre }} ({{ cliente.email }}) ({{ cliente.idcliente }})
+        </option>
+      </select>
+    </div>
+
+    <div>
+      <label class="block text-gray-700">Fecha de Reserva</label>
+      <input type="date" formControlName="fecha_reserva" class="w-full p-2 border rounded-lg">
+    </div>
+
+    <div>
+      <label class="block text-gray-700">Duración de Estancia (días)</label>
+      <input type="number" formControlName="duracion_estancia" class="w-full p-2 border rounded-lg">
+    </div>
+
+    <div>
+      <label class="block text-gray-700">Estado de la Reserva</label>
+      <select formControlName="estado_reserva" class="w-full p-2 border rounded-lg">
+        <option value="pendiente">Pendiente</option>
+        <option value="confirmada">Confirmada</option>
+        <option value="cancelada">Cancelada</option>
+      </select>
+    </div>
+
+    <div>
+      <label class="block text-gray-700">Monto Total</label>
+      <input type="number" formControlName="monto_total" class="w-full p-2 border rounded-lg">
+    </div>
+
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg w-full hover:bg-blue-600">
+      Guardar Reserva
+    </button>
+  </form>
+
+  <!-- Sección para mostrar la lista de reservas -->
+  <h2 class="text-xl font-bold mt-6">Lista de Reservas</h2>
+  <div *ngIf="reservas.length === 0" class="text-gray-500">No hay reservas registradas.</div>
+  <ul class="mt-2">
+    <li *ngFor="let reserva of reservas" class="p-2 border-b">
+      <strong>Cliente:</strong> {{ reserva.idcliente }} -
+      <strong>Fecha:</strong> {{ reserva.fechareserva }} -
+      <strong>Estado:</strong> {{ getEstadoCompleto(reserva.estadoreserva) }}
+    </li>
+  </ul>
+</div>

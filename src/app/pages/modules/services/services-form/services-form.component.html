@@ -1,0 +1,19 @@
+<div class="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg">
+  <h2 class="text-2xl font-bold mb-4">Agregar Servicio</h2>
+
+  <form [formGroup]="servicioForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    <div>
+      <label class="block text-gray-700">Descripción</label>
+      <input type="text" formControlName="descripcion" class="w-full p-2 border rounded-lg">
+    </div>
+
+    <div>
+      <label class="block text-gray-700">Precio</label>
+      <input type="number" formControlName="precio" class="w-full p-2 border rounded-lg">
+    </div>
+
+    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-lg w-full hover:bg-green-600">
+      Guardar Servicio
+    </button>
+  </form>
+</div>

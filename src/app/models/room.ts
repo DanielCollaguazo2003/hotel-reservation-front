@@ -3,6 +3,6 @@ export interface Habitacion {
   numero: number;
   tipo: string;
   estado: boolean;
-  precioPorNoche: number;
-  precioPorDia: number;
+  precio_por_noche: number;
+  precio_por_dia: number;
 }

@@ -1,0 +1,16 @@
+<table class="min-w-full table-auto border-collapse text-left">
+  <thead class="bg-gray-100">
+    <tr>
+      <th class="px-4 py-2 border-b text-sm font-semibold text-gray-600">Nombre</th>
+      <th class="px-4 py-2 border-b text-sm font-semibold text-gray-600">Email</th>
+      <th class="px-4 py-2 border-b text-sm font-semibold text-gray-600">Teléfono</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cliente of clientes" class="hover:bg-gray-50">
+      <td class="px-4 py-2 border-b text-sm text-gray-700">{{ cliente.nombre }}</td>
+      <td class="px-4 py-2 border-b text-sm text-gray-700">{{ cliente.email }}</td>
+      <td class="px-4 py-2 border-b text-sm text-gray-700">{{ cliente.telefono }}</td>
+    </tr>
+  </tbody>
+</table>
