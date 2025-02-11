@@ -1,49 +1,49 @@
-<div class="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-  <h2 class="text-2xl font-bold mb-4">Administración de Facturas y Reservaciones</h2>
+<div class="max-w-6xl mx-auto p-6 bg-gray-100 shadow-inner rounded-xl">
+  <h2 class="text-2xl font-bold text-gray-700 mb-4">Administración de Facturas y Reservaciones</h2>
 
   <!-- Barra de búsqueda -->
-  <div class="mb-4 flex items-center gap-2">
+  <div class="mb-4 flex items-center gap-3">
     <input
       type="text"
       [(ngModel)]="searchText"
       placeholder="Buscar por número de factura o estado"
-      class="w-full p-2 border rounded-lg"
+      class="w-full p-3 bg-gray-200 rounded-xl shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-400"
     />
-    <button (click)="obtenerFacturas()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
-      Buscar
+    <button (click)="obtenerFacturas()" class="px-4 py-2 rounded-xl bg-blue-500 text-white shadow-md hover:shadow-lg transition">
+      🔍 Buscar
     </button>
   </div>
 
   <!-- Botón para agregar nueva factura -->
-  <button (click)="nuevaFactura()" class="bg-green-500 text-white px-4 py-2 rounded-lg mb-4 hover:bg-green-600">
-    + Nueva Factura
+  <button (click)="nuevaFactura()" class="px-4 py-2 rounded-xl bg-green-500 text-white shadow-md hover:shadow-lg transition mb-4">
+    ➕ Nueva Factura
   </button>
 
   <!-- Tabla de facturas -->
   <div class="overflow-x-auto">
-    <table class="min-w-full border-collapse border border-gray-300">
+    <table class="min-w-full border-collapse bg-gray-100 rounded-xl shadow-md">
       <thead>
-        <tr class="bg-gray-200">
-          <th class="border px-4 py-2">Número Factura</th>
-          <th class="border px-4 py-2">Fecha Emisión</th>
-          <th class="border px-4 py-2">Monto</th>
-          <th class="border px-4 py-2">Estado Pago</th>
-          <th class="border px-4 py-2">ID Reserva</th>
-          <th class="border px-4 py-2">Acciones</th>
+        <tr class="bg-gray-300 rounded-xl">
+          <th class="px-4 py-3 text-left text-gray-700">Número Factura</th>
+          <th class="px-4 py-3 text-left text-gray-700">Fecha Emisión</th>
+          <th class="px-4 py-3 text-left text-gray-700">Monto</th>
+          <th class="px-4 py-3 text-left text-gray-700">Estado Pago</th>
+          <th class="px-4 py-3 text-left text-gray-700">ID Reserva</th>
+          <th class="px-4 py-3 text-left text-gray-700">Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let factura of facturasFiltradas()">
-          <td class="border px-4 py-2">{{ factura.numerofactura }}</td>
-          <td class="border px-4 py-2">{{ factura.fechaemision }}</td>
-          <td class="border px-4 py-2">${{ factura.total }}</td>
-          <td class="border px-4 py-2">{{ factura.estadopago }}</td>
-          <td class="border px-4 py-2">{{ factura.idreserva }}</td>
-          <td class="border px-4 py-2 flex gap-2">
-            <button (click)="editarFactura(factura)" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600">
+        <tr *ngFor="let factura of facturasFiltradas()" class="hover:bg-gray-200 transition">
+          <td class="px-4 py-3 text-gray-700">{{ factura.numerofactura }}</td>
+          <td class="px-4 py-3 text-gray-700">{{ factura.fechaemision }}</td>
+          <td class="px-4 py-3 text-gray-700">${{ factura.total }}</td>
+          <td class="px-4 py-3 text-gray-700">{{ factura.estadopago }}</td>
+          <td class="px-4 py-3 text-gray-700">{{ factura.idreserva }}</td>
+          <td class="px-4 py-3 flex gap-3">
+            <button (click)="editarFactura(factura)" class="px-3 py-1 rounded-xl bg-yellow-500 text-white shadow-md hover:shadow-lg transition">
               ✏️ Editar
             </button>
-            <button (click)="eliminarFactura(factura.idFactura)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
+            <button (click)="eliminarFactura(factura.idFactura)" class="px-3 py-1 rounded-xl bg-red-500 text-white shadow-md hover:shadow-lg transition">
               🗑 Eliminar
             </button>
           </td>

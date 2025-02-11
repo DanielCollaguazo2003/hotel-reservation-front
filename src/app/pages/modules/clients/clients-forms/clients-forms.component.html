@@ -1,20 +1,24 @@
-<form [formGroup]="clienteForm" (ngSubmit)="agregarCliente()" class="bg-white p-6 rounded-lg shadow-md max-w-lg mx-auto">
-  <h2 class="text-2xl font-semibold mb-4">Agregar Cliente</h2>
+<div class="min-h-screen flex items-center justify-center bg-gray-100 p-6">
+  <form [formGroup]="clienteForm" (ngSubmit)="agregarCliente()" class="bg-white p-6 rounded-lg shadow-md max-w-lg w-full">
+    <h2 class="text-2xl font-semibold mb-6 text-center">Agregar Cliente</h2>
 
-  <div class="mb-4">
-    <label for="nombre" class="block text-gray-700">Nombre</label>
-    <input id="nombre" type="text" formControlName="nombre" class="w-full p-2 border border-gray-300 rounded mt-1" />
-  </div>
+    <div class="mb-6">
+      <label for="nombre" class="block text-gray-700 font-medium">Nombre</label>
+      <input id="nombre" type="text" formControlName="nombre" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    </div>
 
-  <div class="mb-4">
-    <label for="email" class="block text-gray-700">Email</label>
-    <input id="email" type="email" formControlName="email" class="w-full p-2 border border-gray-300 rounded mt-1" />
-  </div>
+    <div class="mb-6">
+      <label for="email" class="block text-gray-700 font-medium">Email</label>
+      <input id="email" type="email" formControlName="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    </div>
 
-  <div class="mb-4">
-    <label for="telefono" class="block text-gray-700">Teléfono</label>
-    <input id="telefono" type="text" formControlName="telefono" class="w-full p-2 border border-gray-300 rounded mt-1" />
-  </div>
+    <div class="mb-6">
+      <label for="telefono" class="block text-gray-700 font-medium">Teléfono</label>
+      <input id="telefono" type="text" formControlName="telefono" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    </div>
 
-  <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Guardar Cliente</button>
-</form>
+    <button type="submit" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+      Guardar Cliente
+    </button>
+  </form>
+</div>
